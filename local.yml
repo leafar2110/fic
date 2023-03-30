@@ -1,0 +1,50 @@
+version: "3.7"
+services:
+  app:
+    build:
+      args:
+        user: admin
+        uid: 1000
+      context: ./
+      dockerfile: ./compose/local/laravel/Dockerfile
+    container_name: fic-app
+    restart: unless-stopped
+    working_dir: /var/www/
+    volumes:
+      - ./fic:/var/www
+    ports:
+      - 9000:80
+    networks:
+      - fic
+
+  db:
+    image: mysql:5.7
+    container_name: fic-db
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: fic
+      MYSQL_ROOT_PASSWORD: fic
+      MYSQL_PASSWORD: fic
+      MYSQL_USER: fic
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysql
+    volumes:
+      - ./compose/local/mysql:/docker-entrypoint-initdb.d
+    networks:
+      - fic
+
+  nginx:
+    image: nginx:alpine
+    container_name: fic-nginx
+    restart: unless-stopped
+    ports:
+      - 8000:80
+    volumes:
+      - ./fic:/var/www
+      - ./compose/local/nginx:/etc/nginx/conf.d
+    networks:
+      - fic
+
+networks:
+  fic:
+    driver: bridge
