@@ -22,18 +22,6 @@ WORKDIR /var/www
 # Copiamos los archivos necesarios a la imagen
 COPY fic/ /var/www
 
-# Instalamos las dependencias de Composer
-RUN composer update
-RUN composer install --no-scripts --no-autoloader
-
-# Generamos la llave de aplicación
-RUN php artisan key:generate --force
-
-# Compilamos los assets
-RUN php artisan config:cache
-RUN php artisan route:cache
-RUN php artisan view:cache
-
 # Exponemos el puerto 9000 para acceder a la aplicación
 EXPOSE 9000
 
