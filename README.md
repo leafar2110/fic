@@ -25,7 +25,7 @@ Para correr el proyecto se deben seguir las siguientes instrucciones en la termi
     #Aceder al contenedor donde se ejecuta laravel
     docker exec -it fic-app bash
 
-        #Dentro de la consola bash del contenedor de laravel ejecutar los siguientes comandos
+        #Dentro de la consola del contenedor de laravel ejecutar los siguientes comandos
 
         #instalar dependencias del proyecto con composer 
         composer update
@@ -33,10 +33,18 @@ Para correr el proyecto se deben seguir las siguientes instrucciones en la termi
         #asegurar que todas las clases se esten leyendo
         composer dump-autoload
 
-        #ejecutar migraciones con datos de pruebas 
+        #ejecutar migraciones y cargar datos de pruebas y Usuario
         php artisan migrate --seed
     
-    #fuera de la terminal de docker y luego de haber ejecutado el composer update ejecutamos
-    npm install && npm run dev
-    
 ```
+Usuario por defecto para fines de prueba
+
+Email
+```sh
+yonnys@test.cl
+```
+Clave
+```sh
+password
+```
+

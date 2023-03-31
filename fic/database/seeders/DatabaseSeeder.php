@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
@@ -132,6 +132,7 @@ class DatabaseSeeder extends Seeder
         DB::table('zones')->insert($zones);
         DB::table('documents')->insert($documents);
         DB::table('associated_documents')->insert($associated_documents);
+        User::Factory(1)->create();
     }
 
     public static function create_relations_documents($arrs){

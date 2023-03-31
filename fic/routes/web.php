@@ -17,7 +17,7 @@ use App\Http\Controllers\PageController;
 Route::controller(PageController::class)->group(function () {
     Route::get('/',           'home')->name('home');
     Route::get('formulario',  'form')->name('form');
-    Route::post('resultados',  'results')->name('results');
+    Route::post('resultados',  'results')->middleware('auth')->name('results');
 });
 
 Route::middleware('auth')->group(function () {

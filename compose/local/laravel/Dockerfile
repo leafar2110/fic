@@ -22,6 +22,8 @@ WORKDIR /var/www
 # Copiamos los archivos necesarios a la imagen
 COPY fic/ /var/www
 
+RUN composer update
+
 # Exponemos el puerto 9000 para acceder a la aplicación
 EXPOSE 9000
 

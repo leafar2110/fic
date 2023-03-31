@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Zone;
 use App\Models\Document;
-use Illuminate\Support\Facades\DB;
 use App\Http\Requests\FormalizateForm;
 
 class PageController extends Controller
