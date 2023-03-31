@@ -13,28 +13,27 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('documentos_asociados', function (Blueprint $table) {
+        Schema::create('associated_documents', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('rubro_id');
-            $table->unsignedBigInteger('comuna_id');
-            $table->unsignedBigInteger('documento_id');
+            $table->unsignedBigInteger('category_id');
+            $table->unsignedBigInteger('zone_id');
+            $table->unsignedBigInteger('document_id');
             $table->timestamps();
 
-            $table->foreign('rubro_id')
+            $table->foreign('category_id')
                 ->references('id')
-                ->on('rubros')
+                ->on('categories')
                 ->onDelete('cascade');
 
-            $table->foreign('comuna_id')
+            $table->foreign('zone_id')
                 ->references('id')
-                ->on('comunas')
+                ->on('zones')
                 ->onDelete('cascade');
 
-            $table->foreign('documento_id')
+            $table->foreign('document_id')
                 ->references('id')
-                ->on('documentos')
+                ->on('documents')
                 ->onDelete('cascade');
-
         });
     }
 
@@ -45,6 +44,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('associate_documents');
+        Schema::dropIfExists('associated_documents');
     }
 };

@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $now = Carbon::now();
-        $rubros = [
+        $categories = [
             [
                 "id"   => 1,
                 "name" =>"Pastelería",
@@ -35,7 +35,7 @@ class DatabaseSeeder extends Seeder
                 "created_at" => $now,
             ],
         ];
-        $comunas = [
+        $zones = [
             [
                 "id"   => 1,
                 "name" =>"Las Condes",
@@ -52,7 +52,7 @@ class DatabaseSeeder extends Seeder
                 "created_at" => $now,
             ],
         ];
-        $documentos = [
+        $documents = [
             [
                 "id"   => 1,
                 "name" =>"Permiso de obras",
@@ -110,40 +110,40 @@ class DatabaseSeeder extends Seeder
             ],
         ];
         $relations = [
-            1 => [ // ID rubro Pasteleria
-                1 => [4, 5], // ID comunas -> ID documentos,
+            1 => [ // ID category Pasteleria
+                1 => [4, 5], // ID zones -> ID documents,
                 2 => [4, 5, 9],
                 3 => [4, 5, 9],
             ],
-            2 => [ // ID rubro Minimarket
+            2 => [ // ID category Minimarket
                 1 => [1, 2, 3],
                 2 => [1, 3, 8],
                 3 => [9, 11]
             ],
-            3 => [ // ID rubro Electrónica
+            3 => [ // ID category Electrónica
                 1 => [6,7],
                 2 => [6, 10],
                 3 => [6, 9, 10]
             ],
         ];
-        $documentos_asociados = self::create_relations_documents($relations);
+        $associated_documents = self::create_relations_documents($relations);
 
-        DB::table('rubros')->insert($rubros);
-        DB::table('comunas')->insert($comunas);
-        DB::table('documentos')->insert($documentos);
-        DB::table('documentos_asociados')->insert($documentos_asociados);
+        DB::table('categories')->insert($categories);
+        DB::table('zones')->insert($zones);
+        DB::table('documents')->insert($documents);
+        DB::table('associated_documents')->insert($associated_documents);
     }
 
     public static function create_relations_documents($arrs){
         $result = [];
-        foreach($arrs as $key_rubro => $value_rubros){
-            foreach($value_rubros as $key_comuna => $value_comunas){
-                foreach($value_comunas as $key_documento){
+        foreach($arrs as $key_category => $value_categories){
+            foreach($value_categories as $key_zone => $value_zones){
+                foreach($value_zones as $key_document){
                     $result[] = [
-                            'rubro_id'     => $key_rubro,
-                            'comuna_id'    => $key_comuna,
-                            'documento_id' => $key_documento,
-                            "created_at"   => Carbon::now(),
+                            'category_id' => $key_category,
+                            'zone_id'     => $key_zone,
+                            'document_id' => $key_document,
+                            "created_at"  => Carbon::now(),
                     ];
                 }
             }
