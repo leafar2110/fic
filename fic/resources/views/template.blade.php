@@ -15,7 +15,7 @@
             <nav class="navbar navbar-expand-lg bg-body-tertiary nav-bg-cs">
                 <div class="container">
                     <a class="navbar-brand a-color-cs" href="{{ route('home') }}">
-                       FIC
+                        <img src="{{ asset('img/logo.png') }}" class="h-16">
                     </a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>

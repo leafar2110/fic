@@ -62,8 +62,8 @@
                                         <p class="mt-3 mb-3"> Debes dirigirte al municipio de tu comuna y presenta la documentación solicitada.</p>
                                         <div>
                                             <p class="mb-3">Para el rubro <strong>"{{ $category->name }}"</strong>  en la comuna <strong>"{{ $zone->name }}"</strong> los documentos necesarios son: </p>
-                                            <table class="table">
-                                                <thead>
+                                            <table class="table table-striped table-hover">
+                                                <thead class="nav-bg-cs text-bg-dark">
                                                   <tr>
                                                     <th scope="col">#</th>
                                                     <th scope="col">Documento</th>

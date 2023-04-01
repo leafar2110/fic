@@ -9,7 +9,14 @@ class Document extends Model
 {
     use HasFactory;
 
-    public static function get_documents_name_by_zone_and_category($data)
+    /**
+     * Recibe un array con el ID del rubro y el ID de la comuna
+     * y retorna los nombres de los documentos
+     *
+     * @param array $data
+     * @return object
+     */
+    public static function get_documents_name_by_zone_and_category(array $data): object
     {
         $result = self::query()
                 ->join('associated_documents', 'documents.id', '=', 'associated_documents.document_id' )

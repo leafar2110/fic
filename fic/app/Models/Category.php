@@ -9,7 +9,13 @@ class Category extends Model
 {
     use HasFactory;
 
-    public static function get_name_category_by_id($id)
+    /**
+     * Recibe el ID del rubro y retorna los nombre
+     *
+     * @param int $id
+     * @return object
+     */
+    public static function get_name_category_by_id(int $id): object
     {
         $result = self::query()->select('categories.name')->where('categories.id', $id)->get()->first();
         return $result;
