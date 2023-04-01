@@ -22,7 +22,13 @@ WORKDIR /var/www
 # Copiamos los archivos necesarios a la imagen
 COPY fic/ /var/www
 
+COPY fic/.env.example /var/www/.env
+
 RUN composer update
+
+RUN composer install
+
+RUN composer dump-autoload
 
 # Exponemos el puerto 9000 para acceder a la aplicación
 EXPOSE 9000
