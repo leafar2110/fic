@@ -1,43 +1,60 @@
 # Proyecto Desafío FIC 
 
-Para correr el proyecto se deben seguir las siguientes instrucciones en la terminal
+Para correr el proyecto se deben seguir las siguientes instrucciones en la terminal:
 
+
+
+
+Clonar el repositorio de github SSH
 ```sh
-    # Clonar el repositorio de github
-
-    #ssh
-    git clone git@github.com:leafar2110/fic.git
-
-    #o
-
-    #http
-    git clone https://github.com/leafar2110/fic.git
-
-    # Aceder a la carpeta clonada 
-    cd fic
-
-    # Compilar y generar y levantar servicios de docker
-    sudo docker-compose -f local.yml  up -d 
-
-    # Apagar servicios de docker (para finalizar la ejecucion del proyecto)
-    sudo docker-compose -f local.yml  down
-
-    #Aceder al contenedor donde se ejecuta laravel
-    docker exec -it fic-app bash
-
-        #Dentro de la consola del contenedor de laravel ejecutar los siguientes comandos
-
-        #instalar dependencias del proyecto con composer 
-        composer update
-
-        #asegurar que todas las clases se esten leyendo
-        composer dump-autoload
-
-        #ejecutar migraciones y cargar datos de pruebas y Usuario
-        php artisan migrate --seed
-    
+git clone git@github.com:leafar2110/fic.git
 ```
-Usuario por defecto para fines de prueba
+Clonar el repositorio de github HTTPS
+```sh
+https://github.com/leafar2110/fic.git
+```
+Aceder a la carpeta clonada 
+```sh
+cd fic
+```
+Compilar y generar y levantar servicios de docker 
+```sh
+sudo docker-compose -f local.yml  up -d 
+```
+
+Apagar servicios de docker (para finalizar la ejecucion del proyecto)
+```sh
+sudo docker-compose -f local.yml  down
+```
+
+Aceder al contenedor donde se ejecuta laravel
+```sh
+docker exec -it fic-app bash
+```
+
+Deento de la consola del contenedor de laravel ejecutamos los siguentes comenados
+
+Asegurar que todas las clases se carguen
+```sh
+composer dump-autoload
+```
+
+Generamos llave privada 
+```sh
+php artisan key:generate
+```
+
+Ejecutar migraciones y cargar datos de pruebas y Usuario
+```sh
+php artisan migrate --seed
+```
+
+Dar permiso necesario a los directorios de storage
+```sh
+chmod -R 777 storage/logs/ && chmod -R 777 storage/framework/
+```
+
+Usuario por defecto para fines de prueba es: 
 
 Email
 ```sh
