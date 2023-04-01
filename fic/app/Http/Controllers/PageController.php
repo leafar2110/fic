@@ -9,37 +9,26 @@ use App\Http\Requests\FormalizateForm;
 
 class PageController extends Controller
 {
-    public function home(){
+    public function home()
+    {
         return view('formalization/home');
     }
 
-    public function form(){
-
-        $categories = Category::get();
-        $zones = Zone::get();
-
+    public function form()
+    {
         return view('formalization/form', [
-           "zones"      => $zones,
-           "categories" => $categories
+           "zones"      => Zone::get(),
+           "categories" => Category::get()
         ]);
     }
 
-    public function results(FormalizateForm $request){
-
-        $zone = $request->input('zone');
-        $category = $request->input('category');
-
-        $result = Document::query()
-                    ->join('associated_documents', 'documents.id', '=', 'associated_documents.document_id' )
-                    ->join('zones', 'associated_documents.zone_id', '=', 'zones.id'  )
-                    ->join('categories', 'associated_documents.category_id', '=', 'categories.id' )
-                    ->where('associated_documents.category_id', $category)
-                    ->where('associated_documents.zone_id', $zone)
-                    ->select('documents.name')
-                    ->get();
-
+    public function results(FormalizateForm $request)
+    {
+        $data = $request->all();
         return view('formalization/results', [
-                        "result"  => $result,
-                     ]);
+            "documents"  => Document::get_documents_name_by_zone_and_category($data),
+            "category"   => Category::get_name_category_by_id($data['category']),
+            "zone"       => Zone::get_name_zone_by_id($data['zone']),
+        ]);
     }
 }

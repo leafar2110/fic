@@ -2,7 +2,7 @@
 
 @section('content')
 
-<h3 class="h3 text-center">Por que formalizar tu emprendimiento</h3>
+<h3 class="h3 text-center title-h3">Por que formalizar tu emprendimiento</h3>
 <div class="timeline">
   <div class="timeline__event  animated fadeInUp delay-3s timeline__event--type1">
     <div class="timeline__event__icon ">

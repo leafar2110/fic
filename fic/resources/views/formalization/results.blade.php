@@ -59,20 +59,21 @@
                                 <div class="single-timeline-content d-flex wow fadeInLeft" data-wow-delay="0.3s" style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInLeft;">
                                     <div class="timeline-text">
                                         <h5 class="h5">Presentar documentación en Municipio</h5>
-                                        <p class="mt-3 mb-5"> Debes dirigirte al municipio de tu comuna y presenta la documentación solicitada. Los documentos son los siguientes:</p>
+                                        <p class="mt-3 mb-3"> Debes dirigirte al municipio de tu comuna y presenta la documentación solicitada.</p>
                                         <div>
+                                            <p class="mb-3">Para el rubro <strong>"{{ $category->name }}"</strong>  en la comuna <strong>"{{ $zone->name }}"</strong> los documentos necesarios son: </p>
                                             <table class="table">
                                                 <thead>
                                                   <tr>
                                                     <th scope="col">#</th>
-                                                    <th scope="col">Documentos</th>
+                                                    <th scope="col">Documento</th>
                                                   </tr>
                                                 </thead>
                                                 <tbody>
-                                                    @foreach( $result as $category )
+                                                    @foreach( $documents as $document )
                                                       <tr>
                                                         <th scope="row">{{ $loop->index + 1}}</th>
-                                                        <td>{{ $category->name }}</td>
+                                                        <td>{{ $document->name }}</td>
                                                       </tr>
                                                     @endforeach
 
