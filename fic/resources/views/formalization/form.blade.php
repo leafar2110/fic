@@ -8,7 +8,7 @@
 
         <form class="formwidth40 form-bg" method="POST" action="{{ route('results') }}">
             @csrf
-          <p class="h3">{{__('Buscar lista de documentos segun:')}}</p>
+          <p class="h3">{{__('Buscar lista de documentos')}}</p>
           <br>
 
           <div class="form-outline mb-4 col-12">

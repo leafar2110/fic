@@ -34,11 +34,6 @@ docker exec -it fic-app bash
 
 Deento de la consola del contenedor de laravel ejecutamos los siguentes comenados
 
-Asegurar que todas las clases se carguen
-```sh
-composer dump-autoload
-```
-
 Generamos llave privada 
 ```sh
 php artisan key:generate
@@ -65,3 +60,16 @@ Clave
 password
 ```
 
+# Logica del proyecto
+
+He crearon 4 tabalas en total 
+
+Zones -> Comunas
+
+Categories -> Rubros
+
+Documents -> Documentos
+
+estas 3 bases de datos no se relacionan entre si, existe una 4ta base de datos 
+
+asociative_documents -> es la relación de comunas rubros y documentos me valgo de esa relación y con un metodo en el modelo Document para retornar los ID de los documentos  que aparezcan en la tabla asociative_documents donde se cumpla rubro y comuna la solicitud
