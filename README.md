@@ -74,4 +74,4 @@ estas 3 tablas de base de dato no se relacionan entre si, existe una 4ta tabla e
 
 asociative_documents -> esta tabla se relaciona directamente con las otras 3 tablas 
 
-(zone_id, category_id, document_id) y en ella registro las diferentes combinaciones de documentos segun rubro y comuna y me valgo de esa relación para filtrar con un metodo (get_documents_name_by_zone_and_category()) en el modelo Document, que al recibir un array con el ID de la comuna y del rubro retorna nombres los documentos  que aparezcan en la tabla asociative_documents relacionados con la comuna y el rubro indicado
+(zone_id, category_id, document_id) y en ella registro las diferentes combinaciones de documentos segun rubro y comuna y me valgo de esa relación para filtrar con un metodo (get_documents_name_by_zone_and_category()) en el modelo Document, que al recibir un array con el ID de la comuna y el ID del rubro retorna los nombres los documentos que segun la tabla (asociative_documents) se relacionan con esa combinacion 
